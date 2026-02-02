@@ -1,0 +1,1649 @@
+<!doctype html>
+<html lang="ko" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korea Biotech CEO Forum 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .font-display {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .font-body {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    #network-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .teal-gradient {
+      background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%);
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(25, 60, 45, 0.95) 0%, rgba(30, 70, 100, 0.95) 50%, rgba(50, 90, 30, 0.95) 100%);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(44, 122, 95, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(44, 122, 95, 0.5);
+    }
+
+    .theme-card {
+      transition: all 0.3s ease;
+    }
+
+    .theme-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .nav-btn {
+      color: white !important;
+    }
+
+    .nav-btn:hover {
+      background: #95BC1D !important;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(133, 172, 13, 0.6), 0 0 0 4px rgba(255, 255, 255, 0.5), 0 0 0 8px rgba(133, 172, 13, 0.2) !important;
+    }
+
+    .nav-scrolled {
+      background: transparent !important;
+    }
+
+    .nav-scrolled .nav-btn {
+      color: white !important;
+      background: #85AC0D !important;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-scrolled .nav-btn:hover {
+      background: #95BC1D !important;
+      color: white !important;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    section {
+      scroll-margin-top: 80px;
+    }
+
+    /* 사이드 메뉴 스크롤바 스타일 */
+    #sideMenu .overflow-y-auto::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #sideMenu .overflow-y-auto::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    #sideMenu .overflow-y-auto::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+
+    #sideMenu .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Firefox 스크롤바 스타일 */
+    #sideMenu .overflow-y-auto {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -25px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #85AC0D;
+      border: 3px solid #3B7A57;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 30px;
+      border-left: 2px solid rgba(133, 172, 13, 0.3);
+    }
+
+    /* Side Menu Styles */
+    #sideMenu {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #sideMenu.open {
+      transform: translateX(0);
+    }
+
+    #menuOverlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    #menuOverlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body">
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background: #F8F6F1;">
+   <!-- Navigation -->
+   <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+       <img src="images/logo-nobg.png" alt="Korea Biotech CEO Forum" class="h-16 sm:h-20 md:h-24 w-auto" style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15)); transform: translateZ(0);">
+      </div>
+      
+      <!-- Hamburger Menu Button -->
+      <button id="menuButton" class="flex flex-col gap-2 p-2" onclick="toggleMenu()">
+       <span class="block w-8 h-1 rounded-full" style="background: #85AC0D; box-shadow: 0 2px 8px rgba(133, 172, 13, 0.4), 0 4px 16px rgba(133, 172, 13, 0.2);"></span>
+       <span class="block w-8 h-1 rounded-full" style="background: #85AC0D; box-shadow: 0 2px 8px rgba(133, 172, 13, 0.4), 0 4px 16px rgba(133, 172, 13, 0.2);"></span>
+       <span class="block w-8 h-1 rounded-full" style="background: #85AC0D; box-shadow: 0 2px 8px rgba(133, 172, 13, 0.4), 0 4px 16px rgba(133, 172, 13, 0.2);"></span>
+      </button>
+     </div>
+    </div>
+   </nav>
+
+   <!-- Overlay -->
+   <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60]" onclick="toggleMenu()"></div>
+
+   <!-- Side Menu -->
+   <div id="sideMenu" class="fixed left-0 top-0 bottom-0 w-80 z-[70] shadow-2xl" style="background: #0F6B7E;">
+    <div class="flex flex-col h-full">
+     <!-- Menu Header -->
+     <div class="flex items-center justify-end p-6 border-b border-white/20">
+      <button onclick="toggleMenu()" class="p-2 hover:bg-white/10 rounded-lg transition-colors">
+       <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+       </svg>
+      </button>
+     </div>
+
+     <!-- Menu Items -->
+     <div class="flex-1 overflow-y-auto py-6">
+      <nav class="space-y-2 px-4">
+       <a href="#about" onclick="toggleMenu()" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-colors font-medium">소개</a>
+       
+       <div class="space-y-1">
+        <a href="#themes" onclick="toggleMenu()" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-colors font-medium">주요 주제</a>
+        <a href="program.html" target="_blank" class="block px-4 py-2 pl-8 text-white/80 hover:bg-white/10 rounded-lg transition-colors text-sm">• 상세 프로그램</a>
+       </div>
+       
+       <a href="#schedule" onclick="toggleMenu()" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-colors font-medium">일정</a>
+       
+       <div class="space-y-1">
+        <a href="#venue" onclick="toggleMenu()" class="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-colors font-medium">장소</a>
+        <a href="#directions" onclick="toggleMenu()" class="block px-4 py-2 pl-8 text-white/80 hover:bg-white/10 rounded-lg transition-colors text-sm">• 오시는 길</a>
+        <a href="javascript:void(0)" onclick="openMealModal(); toggleMenu();" class="block px-4 py-2 pl-8 text-white/80 hover:bg-white/10 rounded-lg transition-colors text-sm">• Dining & Networking</a>
+        <a href="javascript:void(0)" onclick="openAccommodationModal(); toggleMenu();" class="block px-4 py-2 pl-8 text-white/80 hover:bg-white/10 rounded-lg transition-colors text-sm">• 숙소 안내</a>
+        <a href="shuttle-schedule-mobile.html" target="_blank" class="block px-4 py-2 pl-8 text-white/80 hover:bg-white/10 rounded-lg transition-colors text-sm">• 셔틀 안내</a>
+       </div>
+      </nav>
+     </div>
+
+     <!-- Contact Section (Fixed) -->
+     <div class="py-4 border-t border-white/20">
+      <div class="px-4">
+       <h3 class="text-white font-semibold mb-3 text-sm px-4">문의</h3>
+       <div class="space-y-2 px-4" style="font-size: 0.8rem;">
+        <a href="mailto:koreabiotechceoforum@gmail.com" class="flex items-start gap-2 text-white/80 hover:text-white transition-colors">
+         <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+         </svg>
+         <span style="word-break: break-word; line-height: 1.4;">koreabiotechceoforum@gmail.com</span>
+        </a>
+        <a href="tel:+821020798754" class="flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+         <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+         </svg>
+         <span>+82 10 2079 8754</span>
+        </a>
+       </div>
+      </div>
+     </div>
+
+     <!-- Menu Footer -->
+     <div class="px-4 py-6 border-t border-white/20">
+      <div class="px-4">
+       <p class="text-sm text-white/70">Korea Biotech CEO Forum 2026</p>
+       <p class="text-xs text-white/50 mt-1">2026년 2월 27일 - 3월 1일</p>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <!-- Hero Section -->
+   <section id="hero" class="relative w-full flex items-center justify-center hero-gradient" style="min-height: 85vh;">
+    <canvas id="network-canvas"></canvas>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center" style="padding-top: 8rem; padding-bottom: 5rem;">
+     <!-- Year badge removed -->
+     <h1 id="hero-title" class="font-display font-bold text-white mb-6 opacity-0 fade-in-up delay-1" style="font-size: clamp(1.5rem, 4vw, 3.5rem); line-height: 1.2; text-shadow: 3px 3px 6px rgba(0,0,0,0.4); letter-spacing: -0.01em;">
+      Lonely Decisions by CEOs:<br>
+      <span style="font-size: 0.85em; font-weight: 600;">People, Capital and Managing Uncertainty</span>
+     </h1>
+     <p id="hero-subtitle" class="font-body text-base md:text-lg mb-12 max-w-2xl mx-auto opacity-0 fade-in-up delay-2 font-medium" style="color: #E6C300; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+      Designing the Next Corporate Reality<br class="sm:hidden"> in the Age of Uncertainty
+     </p>
+     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 fade-in-up delay-3">
+      <div class="flex items-center gap-3">
+       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 20 20" style="color: #85D4C4;">
+        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" />
+       </svg>
+       <span id="hero-date" class="text-white font-semibold text-xl">2026년 2월27일-3월1일</span>
+      </div>
+      <div class="flex items-center gap-3">
+       <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 20 20" style="color: #85D4C4;">
+        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+       </svg>
+       <span id="hero-location" class="text-white font-semibold text-xl">비오토피아 · 디아넥스호텔</span>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- About Section -->
+   <section id="about" class="w-full py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-8">
+      <h2 class="font-display font-bold mb-6" style="color: #1A1A1A; font-size: clamp(1.75rem, 4vw, 3rem);">포럼 소개</h2>
+      <div class="w-24 h-1 teal-gradient mx-auto rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-start">
+      <!-- Left Column: First Paragraph in Card -->
+      <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-100 shadow-md">
+       <p class="text-lg leading-relaxed" style="color: #666666; line-height: 1.8;">
+        Korea Biotech CEO Forum은 대한민국 바이오테크 산업을 이끄는 리더들이 한자리에 모여, 혁신과 지속 가능한 성장을 위한 아젠다를 심도 있게 논의하는 프리미엄 포럼입니다.
+       </p>
+      </div>
+
+      <!-- Right Column: Second Paragraph in Card -->
+      <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-100 shadow-md">
+       <p class="text-lg leading-relaxed" style="color: #666666; line-height: 1.8;">
+        CEO가 직면한 고독한 의사결정, 핵심 인재 확보, 자본 조달, 불확실성 관리 등 경영의 본질적 과제를 다룹니다. 실질적인 인사이트와 실행 가능한 전략을 공유하며, 동료 CEO들과의 깊이 있는 대화를 통해 새로운 관점을 발견합니다.
+       </p>
+      </div>
+     </div>
+
+
+    </div>
+   </section>
+
+   <!-- Chatham House Rule Section -->
+   <section class="w-full py-12" style="background: linear-gradient(135deg, #2C7A5F 0%, #1a4d3d 100%);">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-8">
+      <h2 class="font-display font-bold text-white mb-2" style="font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.4;">
+       포럼 운영 원칙:<br class="sm:hidden">
+       채텀하우스 룰
+      </h2>
+      <p class="text-white/80 text-xl mb-6">(Chatham House Rule)</p>
+      <div class="w-24 h-1 mx-auto rounded-full" style="background: #85D4C4;"></div>
+     </div>
+     
+     <div class="max-w-4xl mx-auto">
+      <!-- Main Description -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-4 border border-white/20">
+       <p class="text-lg leading-relaxed text-white font-semibold mb-3">
+        본 포럼은<br class="sm:hidden"> 채텀하우스 룰을 적용합니다.
+       </p>
+       <p class="text-base leading-relaxed text-white/90">
+        논의 내용은 외부 공유 가능,<br class="sm:hidden"> 단 <strong class="text-white">발언자(이름·직위·소속)는 절대 공개하지 않습니다.</strong>
+       </p>
+      </div>
+
+      <!-- Key Points -->
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+       <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <div class="flex items-start gap-3 mb-3">
+         <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color: #85D4C4;">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+         </svg>
+         <h4 class="font-bold text-white text-base">자유로운 활용</h4>
+        </div>
+        <p class="text-white/80 text-sm leading-relaxed">
+         토론에서 나온 정보·아이디어·인사이트는 자유롭게 활용·전달할 수 있습니다.
+        </p>
+       </div>
+
+       <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+        <div class="flex items-start gap-3 mb-3">
+         <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color: #FF6B6B;">
+          <path fill-rule="evenodd" d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"/>
+         </svg>
+         <h4 class="font-bold text-white text-base">엄격한 금지</h4>
+        </div>
+        <p class="text-white/80 text-sm leading-relaxed">
+         녹음/녹화/실시간 송출 및 발언자를 추정할 수 있는 단서 공개는 금지합니다.
+        </p>
+       </div>
+      </div>
+
+      <!-- Purpose -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+       <div class="flex items-start gap-3 mb-3">
+        <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color: #85D4C4;">
+         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+         <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+        </svg>
+        <h4 class="font-bold text-white text-base">운영 원칙의 목적</h4>
+       </div>
+       <p class="text-white/90 text-sm leading-relaxed mb-2">
+        발언자의 익명성을 보호하여 참가자들이 불이익이나 오해를 걱정하지 않고 자유롭게 의견을 나누도록 함으로써, <strong class="text-white">토론의 솔직함·깊이·개방성을 높이기 위함</strong>입니다.
+       </p>
+       <p class="text-white/80 text-xs leading-relaxed">
+        이 원칙은 외교·정책·민감한 비즈니스 이슈처럼 주제 자체는 공개가 부담스럽지만, 논의에서 도출된 핵심 인사이트와 방향성은 널리 공유할 가치가 있을 때 활용됩니다.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Themes Section -->
+   <section id="themes" class="w-full py-12 pt-20" style="background: #F8F6F1;">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-6">
+      <h2 class="font-display font-bold mb-6" style="color: #1A1A1A; font-size: clamp(1.75rem, 4vw, 3rem);">주요 주제</h2>
+      <div class="w-24 h-1 teal-gradient mx-auto rounded-full mb-6"></div>
+      <p class="font-semibold mb-16" style="color: #2C7A5F; font-size: clamp(0.95rem, 2vw, 1.1rem);">3가지 핵심 주제를 확장한 6가지 세션</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8 mt-16">
+      <!-- Theme 1 -->
+      <div class="theme-card bg-white rounded-2xl p-8 pt-20 shadow-lg relative">
+       <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-24 h-24 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%); box-shadow: 0 10px 30px rgba(44, 122, 95, 0.4), 0 0 0 4px white, 0 0 0 8px rgba(44, 122, 95, 0.1);">
+        <svg class="w-12 h-12 text-white" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl mb-4 font-bold text-center" style="background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">People</h3>
+       <p class="text-base leading-relaxed text-center" style="color: #666666;">
+        핵심 인재 확보와 조직 문화 구축, 리더십 개발 전략을 공유합니다.
+       </p>
+      </div>
+
+      <!-- Theme 2 -->
+      <div class="theme-card bg-white rounded-2xl p-8 pt-20 shadow-lg relative">
+       <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-24 h-24 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%); box-shadow: 0 10px 30px rgba(44, 122, 95, 0.4), 0 0 0 4px white, 0 0 0 8px rgba(44, 122, 95, 0.1);">
+        <svg class="w-12 h-12 text-white" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl mb-4 font-bold text-center" style="background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Capital</h3>
+       <p class="text-base leading-relaxed text-center" style="color: #666666;">
+        투자 유치 전략, 재무 관리, 지속 가능한 성장을 위한 자본 전략을 논의합니다.
+       </p>
+      </div>
+
+      <!-- Theme 3 -->
+      <div class="theme-card bg-white rounded-2xl p-8 pt-20 shadow-lg relative">
+       <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 w-24 h-24 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%); box-shadow: 0 10px 30px rgba(44, 122, 95, 0.4), 0 0 0 4px white, 0 0 0 8px rgba(44, 122, 95, 0.1);">
+        <svg class="w-12 h-12 text-white" fill="currentColor" viewbox="0 0 20 20">
+          <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl mb-4 font-bold text-center" style="background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Managing Uncertainty</h3>
+       <p class="text-base leading-relaxed text-center" style="color: #666666;">
+        불확실한 시장 환경에서의 의사결정, 리스크 관리, 위기 대응 전략을 모색합니다.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Schedule Section -->
+   <section id="schedule" class="w-full py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-6">
+      <h2 class="font-display font-bold mb-6" style="color: #1A1A1A; font-size: clamp(1.75rem, 4vw, 3rem);">일정</h2>
+      <div class="w-24 h-1 teal-gradient mx-auto rounded-full"></div>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-6">
+      
+      <!-- Day 1: February 27 -->
+      <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-4 sm:p-6 border-2 shadow-xl" style="border-color: #85AC0D;">
+       <div class="text-center mb-4 sm:mb-6">
+        <div class="inline-block px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold mb-3 text-white text-sm sm:text-base" style="background: linear-gradient(135deg, #85AC0D 0%, #2C7A5F 100%);">
+         2월 27일 (금) - Day 1
+        </div>
+        <p class="text-base sm:text-lg" style="color: #666666;">비오토피아 · 메인홀 · W22</p>
+       </div>
+
+       <div class="space-y-3 sm:space-y-4">
+        <!-- Afternoon Session -->
+        <div class="bg-white rounded-xl p-3 sm:p-4 shadow-md">
+         <div class="flex items-center gap-3 sm:gap-4 mb-4">
+          <div class="text-xl sm:text-2xl font-bold" style="color: #85AC0D;">오후</div>
+          <div class="h-1 flex-grow" style="background: linear-gradient(to right, #85AC0D, transparent);"></div>
+         </div>
+         
+         <div class="space-y-3">
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">15:30 - 16:00</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Registration</div>
+           <div class="text-xs" style="color: #999999;">비오토피아 입구</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">15:30 - 16:30</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Welcome Reception (Standing)</div>
+           <div class="text-xs" style="color: #999999;">연회장 포이어</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #85AC0D;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">16:40 - 17:00</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Opening Remarks</div>
+           <div class="text-xs" style="color: #999999;">메인홀</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #85AC0D;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">16:50 - 17:15</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Keynote Address</div>
+           <div class="text-xs" style="color: #999999;">이동훈 SK 바이오팜 대표</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #85AC0D;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">17:15 - 17:40</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Fireside Chat</div>
+           <div class="text-xs" style="color: #999999;">존림 삼성바이오로직스 대표</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #85AC0D;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">17:40 - 18:30</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Member Introduction</div>
+           <div class="text-xs" style="color: #999999;">참석자 소개</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">18:30 - 20:00</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Gala Dinner</div>
+           <div class="text-xs" style="color: #999999;">코스 디너</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">20:00 - 22:00</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Networking Night</div>
+           <div class="text-xs" style="color: #999999;">W22 (타운하우스) · Casual Networking & Drinks</div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+
+      <!-- Day 2: February 28 -->
+      <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-4 sm:p-6 border-2 shadow-xl" style="border-color: #2C7A5F;">
+       <div class="text-center mb-4 sm:mb-6">
+        <div class="inline-block px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold mb-3 text-white text-sm sm:text-base" style="background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%);">
+         2월 28일 (토) - Day 2
+        </div>
+        <p class="text-base sm:text-lg" style="color: #666666;">디아넥스호텔 컨퍼런스룸 · 포도호텔 · W22</p>
+       </div>
+
+       <div class="space-y-3 sm:space-y-4">
+        <!-- Morning Session -->
+        <div class="bg-white rounded-xl p-3 sm:p-4 shadow-md">
+         <div class="flex items-center gap-3 sm:gap-4 mb-4">
+          <div class="text-xl sm:text-2xl font-bold" style="color: #2C7A5F;">오전</div>
+          <div class="h-1 flex-grow" style="background: linear-gradient(to right, #2C7A5F, transparent);"></div>
+         </div>
+         
+         <div class="space-y-3">
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">07:30 - 08:50</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Breakfast 조식</div>
+           <div class="text-xs" style="color: #999999;">디아넥스호텔 레스토랑 · Buffet</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #2C7A5F;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">08:50 - 09:00</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Opening Remarks</div>
+           <div class="text-xs" style="color: #999999;">Agenda & Flow 소개</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #2C7A5F;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">09:00 - 09:30</span>
+            <span class="font-bold text-sm" style="color: #2C7A5F;">FEATURED TALK</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">License & Licensibility</div>
+           <div class="text-xs" style="color: #999999;">윤태영 오스코텍 대표</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #2C7A5F;">
+           <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">09:30 - 10:10</span>
+            <span class="font-bold text-sm whitespace-nowrap" style="color: #2C7A5F;">SESSION 1</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">재무적 생존 전략</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">10:10 - 10:30</span>
+           </div>
+           <div class="font-bold text-base" style="color: #1A1A1A;">Morning Coffee Break</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #2C7A5F;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">10:30 - 11:10</span>
+            <span class="font-bold text-sm" style="color: #2C7A5F;">SESSION 2A</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">전략적 딜-메이킹 I: Asset Deal</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #2C7A5F;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">11:10 - 11:40</span>
+            <span class="font-bold text-sm" style="color: #2C7A5F;">SESSION 2B</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">전략적 딜-메이킹 II: Platform Deal</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">11:40 - 12:50</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Networking Luncheon</div>
+           <div class="text-xs" style="color: #999999;">at The Annex Restaurant · 중식</div>
+          </div>
+         </div>
+        </div>
+
+        <!-- Afternoon Session -->
+        <div class="bg-white rounded-xl p-3 sm:p-4 shadow-md">
+         <div class="flex items-center gap-3 sm:gap-4 mb-4">
+          <div class="text-xl sm:text-2xl font-bold" style="color: #3A6BA3;">오후</div>
+          <div class="h-1 flex-grow" style="background: linear-gradient(to right, #3A6BA3, transparent);"></div>
+         </div>
+         
+         <div class="space-y-3">
+          <div class="border-l-4 pl-4" style="border-color: #3A6BA3;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">12:50 - 13:10</span>
+            <span class="font-bold text-sm" style="color: #3A6BA3;">R&D TALK</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">R&D Portfolio</div>
+           <div class="text-xs" style="color: #999999;">최영기 유한양행 연구소장</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #3A6BA3;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">13:10 - 13:40</span>
+            <span class="font-bold text-sm" style="color: #3A6BA3;">SESSION 3</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">What to keep within company and what to outsource?</div>
+           <div class="text-xs" style="color: #999999;">더 효율적인 회사 운영을 가능하게 하는 방법</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #3A6BA3;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">13:40 - 14:30</span>
+            <span class="font-bold text-sm" style="color: #3A6BA3;">SESSION 4</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Macro View on AI</div>
+           <div class="text-xs" style="color: #999999;">AI를 바라보는 CEO의 관점은 어떻게 달라야 하는가?</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">14:30 - 15:00</span>
+           </div>
+           <div class="font-bold text-base" style="color: #1A1A1A;">Afternoon Refresh</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #3A6BA3;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">15:00 - 15:40</span>
+            <span class="font-bold text-sm" style="color: #3A6BA3;">SESSION 5</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Resilient Leadership</div>
+           <div class="text-xs" style="color: #999999;">답이 없는 상황에서, 리더는 무엇으로 조직을 이끄는가?</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #3A6BA3;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">15:40 - 16:30</span>
+            <span class="font-bold text-sm" style="color: #3A6BA3;">SESSION 6</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Human Capital & Org Redesign</div>
+           <div class="text-xs" style="color: #999999;">사람을 지키는 결정과 회사를 살리는 결정은 언제 충돌하는가?</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #3A6BA3;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">16:30 - 16:50</span>
+            <span class="font-bold text-sm" style="color: #3A6BA3;">SPECIAL TALK</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">한국 바이오의 미래 로드맵</div>
+           <div class="text-xs" style="color: #999999;">국가위원회 정책 방향과 Flagship Pioneering 인사이트<br>이병건 플래그십파이어니어링 특별고문</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #3A6BA3;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">16:50 - 17:20</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Discussion</div>
+           <div class="text-xs" style="color: #999999;">자유 토론</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #3A6BA3;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">17:20 - 17:30</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Closing Remarks</div>
+           <div class="text-xs" style="color: #999999;">The Next Chapter</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">18:00 - 20:00</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Dinner at Podo Hotel</div>
+           <div class="text-xs" style="color: #999999;">포도호텔 레스토랑 · 담코스 / 오름코스</div>
+          </div>
+
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-2">
+            <span class="font-bold text-sm" style="color: #666666;">20:00 - 22:00</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Post-Event Gathering</div>
+           <div class="text-xs" style="color: #999999;">W22 (타운하우스) · Casual Gathering</div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+
+      <!-- Day 3: March 1 -->
+      <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-4 sm:p-6 border-2 shadow-xl" style="border-color: #3A6BA3;">
+       <div class="text-center mb-4 sm:mb-6">
+        <div class="inline-block px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold mb-3 text-white text-sm sm:text-base" style="background: linear-gradient(135deg, #3A6BA3 0%, #2C7A5F 100%);">
+         3월 1일 (일) - Day 3
+        </div>
+        <p class="text-base sm:text-lg" style="color: #666666;">디아넥스호텔 레스토랑</p>
+       </div>
+
+       <div class="space-y-3 sm:space-y-4">
+        <!-- Morning Session -->
+        <div class="bg-white rounded-xl p-3 sm:p-4 shadow-md">
+         <div class="flex items-center gap-3 sm:gap-4 mb-4">
+          <div class="text-xl sm:text-2xl font-bold" style="color: #3A6BA3;">오전</div>
+          <div class="h-1 flex-grow" style="background: linear-gradient(to right, #3A6BA3, transparent);"></div>
+         </div>
+         
+         <div class="space-y-3">
+          <div class="border-l-4 pl-4" style="border-color: #CCCCCC;">
+           <div class="flex items-center gap-2 mb-1">
+            <span class="font-bold text-sm" style="color: #666666;">07:30 - 09:30</span>
+           </div>
+           <div class="font-bold text-base mb-1" style="color: #1A1A1A;">Breakfast 조식</div>
+           <div class="text-xs" style="color: #999999;">디아넥스호텔 레스토랑 · Buffet</div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Detailed Program Button Section -->
+   <section class="w-full py-4" style="background: #FFFFFF;">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+     <a href="program.html" target="_blank" class="inline-block">
+      <button class="group relative overflow-hidden px-6 sm:px-12 py-4 sm:py-5 rounded-xl font-bold text-sm sm:text-lg text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl whitespace-nowrap" style="background: linear-gradient(135deg, #2C7A5F 0%, #3A6BA3 100%);">
+       <span class="relative z-10 flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+        <svg class="w-4 h-4 sm:w-6 sm:h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+         <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+        </svg>
+        <span class="inline-block">상세프로그램보기</span>
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+         <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+       </span>
+       <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity" style="background: white;"></div>
+      </button>
+     </a>
+     <p class="mt-4 text-sm opacity-75" style="color: #666666;">전체 세션 일정과 상세 내용을 확인하세요</p>
+    </div>
+   </section>
+
+   <!-- Venue Section -->
+   <section id="venue" class="w-full py-12" style="background: #F8F6F1;">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-6">
+      <h2 class="font-display font-bold mb-6" style="color: #1A1A1A; font-size: clamp(1.75rem, 4vw, 3rem);">포럼 장소</h2>
+      <div class="w-24 h-1 teal-gradient mx-auto rounded-full"></div>
+     </div>
+     
+     <!-- Venue Info -->
+     <div class="hero-gradient rounded-3xl p-8 text-white mb-6">
+      <h3 class="font-display font-bold text-xl mb-6">디아넥스 컨퍼런스룸</h3>
+      <div class="grid sm:grid-cols-2 gap-6">
+       <div class="flex items-center gap-3">
+        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20" style="color: #85D4C4;">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+        </svg>
+        <a href="https://maps.google.com/?q=디아넥스호텔,제주특별자치도+서귀포시+안덕면+산록남로762번길+71" target="_blank" class="opacity-90 text-base hover:opacity-100 hover:underline transition-all cursor-pointer">
+         제주 서귀포시 안덕면 산록남로762번길 71
+        </a>
+       </div>
+       <div class="flex items-center gap-3">
+        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewbox="0 0 20 20" style="color: #85D4C4;">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+        </svg>
+        <a href="tel:064-793-6005" class="opacity-90 text-base hover:opacity-100 hover:underline transition-all cursor-pointer">064-793-6005</a>
+       </div>
+      </div>
+     </div>
+
+     <!-- Venue Image - Full Width -->
+     <div class="rounded-3xl overflow-hidden shadow-2xl" style="height: 500px;">
+      <img src="images/conference-room.jpg" alt="디아넥스 컨퍼런스룸" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+     </div>
+    </div>
+   </section>
+
+   <!-- Information Buttons Section -->
+   <section class="w-full py-8" style="background: #FFFFFF;">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="grid md:grid-cols-3 gap-4">
+      <!-- Meal Information Button -->
+      <button onclick="openMealModal()" class="group relative overflow-hidden px-6 py-4 rounded-lg font-semibold text-base text-white transition-all duration-300 hover:shadow-lg border border-white/20" style="background: linear-gradient(135deg, rgba(44, 122, 95, 0.9) 0%, rgba(58, 107, 163, 0.9) 100%);">
+       <span class="relative z-10 flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+         <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-3 0a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-3 0a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z" clip-rule="evenodd"/>
+        </svg>
+        <span>Dining & Networking</span>
+       </span>
+       <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity" style="background: white;"></div>
+      </button>
+
+      <!-- Accommodation Button -->
+      <button onclick="openAccommodationModal()" class="group relative overflow-hidden px-6 py-4 rounded-lg font-semibold text-base text-white transition-all duration-300 hover:shadow-lg border border-white/20" style="background: linear-gradient(135deg, rgba(44, 122, 95, 0.9) 0%, rgba(58, 107, 163, 0.9) 100%);">
+       <span class="relative z-10 flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+        </svg>
+        <span>숙소 안내</span>
+       </span>
+       <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity" style="background: white;"></div>
+      </button>
+
+      <!-- Shuttle Button -->
+      <a href="shuttle-schedule-mobile.html" target="_blank" class="group relative overflow-hidden px-6 py-4 rounded-lg font-semibold text-base text-white transition-all duration-300 hover:shadow-lg border border-white/20 block" style="background: linear-gradient(135deg, rgba(58, 107, 163, 0.9) 0%, rgba(44, 122, 95, 0.9) 100%);">
+       <span class="relative z-10 flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+         <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+         <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+        </svg>
+        <span>셔틀 안내</span>
+       </span>
+       <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity" style="background: white;"></div>
+      </a>
+     </div>
+     <p class="mt-6 text-center text-sm opacity-75" style="color: #666666;">포럼 기간 중 제공되는 편의 서비스를 확인하세요</p>
+    </div>
+   </section>
+
+   <!-- Meal Information Modal -->
+   <div id="mealModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4" onclick="closeMealModal(event)">
+    <div class="bg-white rounded-2xl max-w-5xl w-full max-h-[85vh] overflow-y-auto shadow-2xl my-auto" onclick="event.stopPropagation()">
+     <!-- Modal Header -->
+     <div class="sticky top-0 bg-white px-6 py-4 border-b flex items-center justify-center relative">
+      <h2 class="font-display font-semibold text-xl text-center" style="color: #1A1A1A;">Dining & Networking Events</h2>
+      <button onclick="closeMealModal()" class="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors" aria-label="닫기">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #666;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg>
+      </button>
+     </div>
+
+     <!-- Modal Content -->
+     <div class="p-4 sm:p-6" style="background: linear-gradient(to bottom, #FAFAFA 0%, #FFFFFF 100%);">
+      <div class="grid lg:grid-cols-2 gap-4">
+      
+       <!-- Day 1: February 27 -->
+       <div class="border-l-4 pl-4 py-2" style="border-color: #85AC0D;">
+        <h3 class="font-display font-bold text-lg mb-3" style="color: #85AC0D;">2월 27일 (금)</h3>
+       
+       <div class="space-y-3">
+        <!-- Registration -->
+        <div class="rounded-lg p-4 shadow-sm border border-gray-100" style="background-color: #F8F6F1;">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Registration  <span class="text-sm font-normal" style="color: #999;">등록</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">📋</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">15:30 - 16:00</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">비오토피아 입구</span>
+          </div>
+         </div>
+        </div>
+
+        <!-- Welcome Reception -->
+        <div class="rounded-lg p-4 shadow-sm border border-gray-100" style="background-color: #F0F9F0;">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Welcome Reception<br><span class="text-sm font-normal" style="color: #999;">웰컴 리셉션</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">🥂</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">16:00 - 16:30</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">연회장 포이어</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">형식</span>
+           <span style="color: #1A1A1A;">Standing Reception</span>
+          </div>
+         </div>
+        </div>
+
+        <!-- Gala Dinner -->
+        <div class="rounded-lg p-4 shadow-sm border border-gray-100" style="background-color: #F4FBFF;">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Gala Dinner  <span class="text-sm font-normal" style="color: #999;">공식 만찬</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">✨</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">18:00 - 20:00</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">메인홀 · 코스 디너</span>
+          </div>
+         </div>
+        </div>
+
+        <!-- Networking Night -->
+        <div class="rounded-lg p-4 shadow-sm border border-gray-100" style="background-color: #F8F6F1;">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Networking Night<br><span class="text-sm font-normal" style="color: #999;">네트워킹 나이트</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">🌃</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">20:00 - 22:00</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">W22 (타운하우스)</span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+
+      <!-- Day 2: February 28 -->
+      <div class="border-l-4 pl-4 py-2" style="border-color: #2C7A5F;">
+       <h3 class="font-display font-bold text-lg mb-3" style="color: #2C7A5F;">2월 28일 (토)</h3>
+       
+       <div class="space-y-3">
+        <!-- Breakfast -->
+        <div class="rounded-lg p-4 shadow-sm border border-gray-100" style="background-color: #F0F9F0;">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Breakfast  <span class="text-sm font-normal" style="color: #999;">조식</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">☕</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">07:30 - 08:50</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">디아넥스호텔 레스토랑</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">메뉴</span>
+           <span style="color: #1A1A1A;">Buffet</span>
+          </div>
+         </div>
+        </div>
+
+        <!-- Lunch -->
+        <div class="rounded-lg p-4 shadow-sm border border-gray-100" style="background-color: #F4FBFF;">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Luncheon Networking  <span class="text-sm font-normal" style="color: #999;">중식</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">🍱</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">12:20 - 13:30</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">디아넥스호텔</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">메뉴</span>
+           <span style="color: #1A1A1A;">스페셜 딤섬 세트</span>
+          </div>
+         </div>
+        </div>
+
+        <!-- Dinner -->
+        <div class="rounded-lg p-4 shadow-sm border border-gray-100" style="background-color: #F8F6F1;">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Dinner at Podo Hotel  <span class="text-sm font-normal" style="color: #999;">석식</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">🍽️</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">18:00 - 20:00</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">포도호텔 레스토랑</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">메뉴</span>
+           <span style="color: #1A1A1A;">담코스 / 오름코스</span>
+          </div>
+         </div>
+        </div>
+
+        <!-- Post-Event Gathering -->
+        <div class="rounded-lg p-4 shadow-sm border border-gray-100" style="background-color: #F0F9F0;">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Post-Event Gathering<br><span class="text-sm font-normal" style="color: #999;">포럼 후 모임</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">🥃</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">20:00 - 22:00</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">W22 (타운하우스)</span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+
+      <div class="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-4"></div>
+
+      <!-- Day 3: March 1 -->
+      <div class="border-l-4 pl-4 py-2" style="border-color: #666;">
+       <h3 class="font-display font-bold text-lg mb-3" style="color: #666;">3월 1일 (일)</h3>
+       
+       <div class="space-y-3">
+        <!-- Breakfast Day 3 (Mar 1) -->
+        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+         <div class="flex items-start justify-between mb-2">
+          <div class="flex-1">
+           <h4 class="font-display font-semibold text-base mb-0.5" style="color: #1A1A1A;">Breakfast  <span class="text-sm font-normal" style="color: #999;">조식 (마지막 조식)</span></h4>
+          </div>
+          <div class="text-2xl opacity-60">☕</div>
+         </div>
+         <div class="grid grid-cols-1 gap-1 text-sm">
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">시간</span>
+           <span style="color: #1A1A1A;">07:30 - 08:50</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">장소</span>
+           <span style="color: #1A1A1A;">디아넥스호텔 레스토랑</span>
+          </div>
+          <div class="grid grid-cols-[70px_1fr] gap-1.5 items-start">
+           <span class="font-medium text-left" style="color: #666;">메뉴</span>
+           <span style="color: #1A1A1A;">Buffet</span>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="bg-gradient-to-br from-gray-50 to-white rounded-lg p-4 border border-gray-100 mt-4">
+       <h4 class="font-semibold text-sm mb-2 flex items-center gap-2" style="color: #1A1A1A;">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" style="color: #2C7A5F;">
+         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+        </svg>
+        안내사항
+       </h4>
+       <div class="space-y-2 text-xs" style="color: #666;">
+        <div class="flex items-start gap-2">
+         <div class="w-1 h-1 rounded-full bg-teal-500 mt-1.5 flex-shrink-0"></div>
+         <p>모든 식사는 포럼 등록비에 포함되어 있습니다.</p>
+        </div>
+        <div class="flex items-start gap-2">
+         <div class="w-1 h-1 rounded-full bg-teal-500 mt-1.5 flex-shrink-0"></div>
+         <p>특별 식단이 필요하신 경우 사전에 말씀해 주시기 바랍니다.</p>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 flex-shrink-0"></div>
+         <p>Coffee Break는 오전/오후 세션 중간에 제공됩니다.</p>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 flex-shrink-0"></div>
+         <p>일정은 현장 사정에 따라 변경될 수 있습니다.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+
+
+    </div>
+   </div>
+
+   <!-- Accommodation Modal -->
+   <div id="accommodationModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4" onclick="closeAccommodationModal(event)">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl my-auto" onclick="event.stopPropagation()">
+     <div class="sticky top-0 bg-white px-6 py-4 border-b flex items-center justify-center relative">
+      <h2 class="font-display font-semibold text-xl text-center" style="color: #1A1A1A;">Accommodation</h2>
+      <button onclick="closeAccommodationModal()" class="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors" aria-label="닫기">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: #666;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg>
+      </button>
+     </div>
+
+     <div class="p-6 space-y-6" style="background: linear-gradient(to bottom, #FAFAFA 0%, #FFFFFF 100%);">
+      
+      <!-- Room Assignment Notice -->
+      <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-200">
+       <div class="flex items-start gap-3">
+        <div>
+         <h4 class="font-semibold text-sm mb-2" style="color: #92400E;">숙소 배정 안내</h4>
+         <p class="text-xs leading-relaxed" style="color: #78350F;">연휴 기간으로 인한 객실 부족으로, 연사분들은 <strong>포도호텔</strong>에, 일부 대표님들은 <strong>타운하우스</strong>에 배정되었습니다.<br>개별 안내를 참고해 주시기 바랍니다.</p>
+        </div>
+       </div>
+      </div>
+
+      <!-- Official Hotel -->
+      <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+       <div class="flex items-start justify-between mb-4">
+        <div>
+         <h3 class="font-display font-semibold text-lg mb-0.5" style="color: #1A1A1A;">Official Accommodation</h3>
+         <p class="text-xs" style="color: #999;">공식 숙소</p>
+        </div>
+       </div>
+       <div class="space-y-5">
+        <div>
+         <h4 class="font-display font-bold text-base mb-2" style="color: #1A1A1A;">디아넥스호텔</h4>
+         <div class="space-y-1.5">
+          <div class="flex items-start gap-2">
+           <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" style="color: #85D4C4;">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+           </svg>
+           <a href="https://maps.google.com/?q=디아넥스호텔,제주특별자치도+서귀포시+안덕면+산록남로762번길+71" target="_blank" class="text-sm hover:text-teal-600 transition-colors" style="color: #1A1A1A;">제주 서귀포시 안덕면 산록남로762번길 71</a>
+          </div>
+          <div class="flex items-start gap-2">
+           <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" style="color: #85D4C4;">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+           </svg>
+           <a href="tel:064-793-6005" class="text-sm hover:text-teal-600 transition-colors" style="color: #1A1A1A;">064-793-6005</a>
+          </div>
+         </div>
+        </div>
+
+        <div class="h-px bg-gray-200"></div>
+
+        <div>
+         <h4 class="font-display font-bold text-base mb-2" style="color: #1A1A1A;">포도호텔</h4>
+         <div class="space-y-1.5">
+          <div class="flex items-start gap-2">
+           <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" style="color: #85D4C4;">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+           </svg>
+           <a href="https://maps.google.com/?q=포도호텔,제주특별자치도+서귀포시+안덕면+산록남로+863" target="_blank" class="text-sm hover:text-teal-600 transition-colors" style="color: #1A1A1A;">제주 서귀포시 안덕면 산록남로 863</a>
+          </div>
+          <div class="flex items-start gap-2">
+           <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" style="color: #85D4C4;">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+           </svg>
+           <a href="tel:064-793-7000" class="text-sm hover:text-teal-600 transition-colors" style="color: #1A1A1A;">064-793-7000</a>
+          </div>
+         </div>
+        </div>
+
+        <div class="h-px bg-gray-200"></div>
+
+        <div>
+         <h4 class="font-display font-bold text-base mb-2" style="color: #1A1A1A;">타운하우스</h4>
+         <div class="space-y-1.5">
+          <div class="flex items-start gap-2">
+           <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" style="color: #85D4C4;">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+           </svg>
+           <a href="https://maps.google.com/?q=타운하우스,제주특별자치도+서귀포시+안덕면+산록남로762번길+79" target="_blank" class="text-sm hover:text-teal-600 transition-colors" style="color: #1A1A1A;">제주 서귀포시 안덕면 산록남로762번길 79</a>
+          </div>
+          <div class="flex items-start gap-2">
+           <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" style="color: #85D4C4;">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+           </svg>
+           <a href="tel:064-793-6000" class="text-sm hover:text-teal-600 transition-colors" style="color: #1A1A1A;">064-793-6000</a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="bg-gradient-to-br from-gray-50 to-white rounded-lg p-4 border border-gray-100">
+       <h4 class="font-semibold text-sm mb-3 flex items-center gap-2" style="color: #1A1A1A;">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" style="color: #2C7A5F;">
+         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+        </svg>
+        안내사항
+       </h4>
+       <div class="space-y-2 text-xs" style="color: #666;">
+        <div class="flex items-start gap-3">
+         <div class="w-1 h-1 rounded-full bg-teal-500 mt-1.5 flex-shrink-0"></div>
+         <p>숙소는 개별적으로 안내되며, 배정된 숙소 정보를 확인해 주시기 바랍니다.</p>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-1 h-1 rounded-full bg-teal-500 mt-1.5 flex-shrink-0"></div>
+         <p>셔틀 버스가 각 숙소와 포럼 장소 간 운행됩니다.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+
+
+    </div>
+   </div>
+
+   <!-- Shuttle Modal -->
+   <div id="shuttleModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4" onclick="closeShuttleModal(event)">
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onclick="event.stopPropagation()">
+     <div class="sticky top-0 hero-gradient text-white p-8 rounded-t-3xl">
+      <div class="flex items-center justify-between">
+       <h2 class="font-display font-bold text-3xl">🚐 셔틀 안내</h2>
+       <button onclick="closeShuttleModal()" class="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-2 transition-all">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+       </button>
+      </div>
+     </div>
+
+     <div class="p-8 space-y-8">
+      <!-- Airport Shuttle -->
+      <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-6 border-2 border-sky-200">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-sky-500 to-blue-500 rounded-full flex items-center justify-center">
+         <span class="text-2xl">✈️</span>
+        </div>
+        <h3 class="font-display font-bold text-2xl" style="color: #1A1A1A;">공항 ↔ 호텔 셔틀</h3>
+       </div>
+       <div class="space-y-4 ml-15">
+        <div class="p-4 bg-white rounded-lg">
+         <h4 class="font-semibold mb-2 flex items-center gap-2" style="color: #1A1A1A;">
+          <span class="text-green-600">→</span> 제주공항 → 디아넥스호텔
+         </h4>
+         <div class="text-sm space-y-1" style="color: #666;">
+          <p><strong>출발 시간:</strong> 2026년 2월 28일 (토) 오전 10:00</p>
+          <p><strong>출발 장소:</strong> 제주국제공항 1층 5번 출구</p>
+          <p><strong>소요 시간:</strong> 약 50분</p>
+          <p><strong>좌석:</strong> 선착순 30석</p>
+         </div>
+        </div>
+
+        <div class="p-4 bg-white rounded-lg">
+         <h4 class="font-semibold mb-2 flex items-center gap-2" style="color: #1A1A1A;">
+          <span class="text-red-600">←</span> 디아넥스호텔 → 제주공항
+         </h4>
+         <div class="text-sm space-y-1" style="color: #666;">
+          <p><strong>출발 시간:</strong> 2026년 3월 1일 (일) 오전 11:00</p>
+          <p><strong>출발 장소:</strong> 디아넥스호텔 정문</p>
+          <p><strong>소요 시간:</strong> 약 50분</p>
+          <p><strong>좌석:</strong> 선착순 30석</p>
+         </div>
+        </div>
+       </div>
+      </div>
+
+      <!-- Hotel Shuttle -->
+      <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-green-200">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+         <span class="text-2xl">🏨</span>
+        </div>
+        <h3 class="font-display font-bold text-2xl" style="color: #1A1A1A;">인근 호텔 ↔ 포럼장 셔틀</h3>
+       </div>
+       <div class="space-y-3 ml-15">
+        <div class="p-4 bg-white rounded-lg">
+         <p class="text-sm mb-2" style="color: #1A1A1A;"><strong>운행 일시:</strong> 2026년 2월 28일 (토)</p>
+         <div class="text-sm space-y-1" style="color: #666;">
+          <p>• 오전 출발: 08:00 (신라호텔) → 08:20 (롯데호텔) → 08:40 (포럼장)</p>
+          <p>• 저녁 복귀: 21:30 (포럼장) → 21:50 (롯데호텔) → 22:10 (신라호텔)</p>
+         </div>
+        </div>
+       </div>
+      </div>
+
+      <!-- Booking Info -->
+      <div class="bg-purple-50 rounded-2xl p-6 border-2 border-purple-200">
+       <h4 class="font-bold text-lg mb-3" style="color: #1A1A1A;">📋 셔틀 예약 안내</h4>
+       <ul class="space-y-2 text-sm" style="color: #666;">
+        <li class="flex items-start gap-2">
+         <span class="text-purple-600">•</span>
+         <span>모든 셔틀 서비스는 무료로 제공됩니다.</span>
+        </li>
+        <li class="flex items-start gap-2">
+         <span class="text-purple-600">•</span>
+         <span>좌석이 한정되어 있으니 사전 예약 필수입니다.</span>
+        </li>
+        <li class="flex items-start gap-2">
+         <span class="text-purple-600">•</span>
+         <span>예약 방법: <a href="mailto:koreabiotechceoforum@gmail.com" class="text-purple-600 hover:text-purple-700 underline">koreabiotechceoforum@gmail.com</a> 또는 <a href="tel:+821020798754" class="text-purple-600 hover:text-purple-700 underline">+82 10 2079 8754</a></span>
+        </li>
+        <li class="flex items-start gap-2">
+         <span class="text-purple-600">•</span>
+         <span>예약 마감: 2026년 2월 25일 (수) 18:00</span>
+        </li>
+        <li class="flex items-start gap-2">
+         <span class="text-purple-600">•</span>
+         <span>출발 10분 전까지 탑승 장소에 도착해 주시기 바랍니다.</span>
+        </li>
+       </ul>
+      </div>
+
+      <!-- Taxi Info -->
+      <div class="bg-gray-50 rounded-2xl p-6 border-2 border-gray-200">
+       <h4 class="font-bold text-lg mb-3" style="color: #1A1A1A;">🚕 택시 정보</h4>
+       <div class="text-sm space-y-2" style="color: #666;">
+        <p>셔틀 이용이 어려우신 경우 택시를 이용하실 수 있습니다.</p>
+        <ul class="space-y-1 ml-4">
+         <li>• 제주공항 → 디아넥스호텔: 약 ₩45,000 (50분 소요)</li>
+         <li>• 제주시내 → 디아넥스호텔: 약 ₩35,000 (40분 소요)</li>
+         <li>• 택시 호출: 1577-1577 (제주콜택시)</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+
+     <div class="sticky bottom-0 bg-gray-50 p-6 rounded-b-3xl border-t">
+      <button onclick="closeShuttleModal()" class="w-full py-4 rounded-xl font-bold text-white transition-all hover:scale-105" style="background: linear-gradient(135deg, #5A4BA3 0%, #2C7A5F 100%);">
+       닫기
+      </button>
+     </div>
+    </div>
+   </div>
+
+   <!-- Directions Section -->
+   <section id="directions" class="w-full py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-6">
+      <h2 class="font-display font-bold mb-6" style="color: #1A1A1A; font-size: clamp(1.75rem, 4vw, 3rem);">오시는 길</h2>
+      <div class="w-24 h-1 teal-gradient mx-auto rounded-full"></div>
+     </div>
+
+     <div class="grid md:grid-cols-2 gap-8">
+      <!-- 비오토피아 -->
+      <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-md">
+       <h3 class="font-display font-bold text-xl mb-4" style="color: #85AC0D;">
+        비오토피아
+       </h3>
+       <div class="space-y-3 text-sm" style="color: #666;">
+        <div>
+         <a href="https://maps.google.com/?q=비오토피아,제주특별자치도+서귀포시+안덕면+산록남로+863-24" target="_blank" class="flex items-center gap-2 hover:text-teal-600 transition-colors">
+          <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color: #85AC0D;">
+           <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+          </svg>
+          <span>제주 서귀포시 안덕면 산록남로 863-24</span>
+         </a>
+        </div>
+        <div>
+         <a href="tel:064-794-0888" class="flex items-center gap-2 hover:text-teal-600 transition-colors">
+          <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color: #85AC0D;">
+           <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
+          <span>064-794-0888</span>
+         </a>
+        </div>
+        <div>
+         <p class="font-semibold mb-1" style="color: #1A1A1A;">주요 행사</p>
+         <p>2월 27일 (금) - 등록, 웰컴 리셉션, 공식 만찬</p>
+        </div>
+       </div>
+      </div>
+
+      <!-- 디아넥스호텔 -->
+      <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-md">
+       <h3 class="font-display font-bold text-xl mb-4" style="color: #2C7A5F;">
+        디아넥스호텔
+       </h3>
+       <div class="space-y-3 text-sm" style="color: #666;">
+        <div>
+         <a href="https://maps.google.com/?q=디아넥스호텔,제주특별자치도+서귀포시+안덕면+산록남로762번길+71" target="_blank" class="flex items-center gap-2 hover:text-teal-600 transition-colors">
+          <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color: #2C7A5F;">
+           <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+          </svg>
+          <span>제주 서귀포시 안덕면 산록남로762번길 71</span>
+         </a>
+        </div>
+        <div>
+         <a href="tel:064-793-6005" class="flex items-center gap-2 hover:text-teal-600 transition-colors">
+          <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style="color: #2C7A5F;">
+           <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
+          <span>064-793-6005</span>
+         </a>
+        </div>
+        <div>
+         <p class="font-semibold mb-1" style="color: #1A1A1A;">주요 행사</p>
+         <p>2월 28일 (토) - 포럼 세션, 조식, 중식</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Footer -->
+   <footer class="w-full py-12 hero-gradient">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="flex flex-col items-center justify-center">
+      <img src="images/logo-nobg.png" alt="Korea Biotech CEO Forum Logo" class="h-24 sm:h-28 md:h-32 lg:h-36 w-auto mb-6" style="filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3)) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15)); transform: translateZ(0);">
+      <p class="text-white opacity-75 text-sm text-center">
+       © Korea Biotech CEO Forum 2026<br>
+       All rights reserved.
+      </p>
+     </div>
+    </div>
+   </footer>
+  </div>
+
+  <script>
+    // Network Animation
+    class NetworkAnimation {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.nodes = [];
+        this.resize();
+        this.init();
+        this.animate();
+        
+        window.addEventListener('resize', () => this.resize());
+      }
+
+      resize() {
+        this.canvas.width = this.canvas.offsetWidth;
+        this.canvas.height = this.canvas.offsetHeight;
+      }
+
+      init() {
+        const nodeCount = 40; // 80에서 40으로 감소
+        this.nodes = [];
+        
+        for (let i = 0; i < nodeCount; i++) {
+          // 70% 노드는 연결된 노드, 30%는 브라운 운동하는 독립 노드
+          const isFloating = Math.random() < 0.3;
+          
+          this.nodes.push({
+            x: Math.random() * this.canvas.width,
+            y: Math.random() * this.canvas.height,
+            vx: (Math.random() - 0.5) * (isFloating ? 1.0 : 0.5),
+            vy: (Math.random() - 0.5) * (isFloating ? 1.0 : 0.5),
+            radius: Math.random() * 2 + 1.5,
+            isFloating: isFloating // 브라운 운동 노드 표시
+          });
+        }
+      }
+
+      animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        this.nodes.forEach(node => {
+          node.x += node.vx;
+          node.y += node.vy;
+          
+          if (node.x < 0 || node.x > this.canvas.width) node.vx *= -1;
+          if (node.y < 0 || node.y > this.canvas.height) node.vy *= -1;
+          
+          this.ctx.beginPath();
+          this.ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+          this.ctx.fillStyle = node.isFloating 
+            ? 'rgba(255, 244, 79, 0.4)' 
+            : 'rgba(255, 244, 79, 0.5)';
+          this.ctx.fill();
+        });
+        
+        // 연결된 노드들만 선 그리기 (밀도 20% 감소)
+        const connectedNodes = this.nodes.filter(n => !n.isFloating);
+        for (let i = 0; i < connectedNodes.length; i++) {
+          for (let j = i + 1; j < connectedNodes.length; j++) {
+            const dx = connectedNodes[i].x - connectedNodes[j].x;
+            const dy = connectedNodes[i].y - connectedNodes[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // 연결 거리를 200으로 감소 (250에서 20% 감소) + 랜덤으로 80%만 그리기
+            if (distance < 200 && Math.random() < 0.8) {
+              this.ctx.beginPath();
+              this.ctx.moveTo(connectedNodes[i].x, connectedNodes[i].y);
+              this.ctx.lineTo(connectedNodes[j].x, connectedNodes[j].y);
+              this.ctx.strokeStyle = `rgba(255, 244, 79, ${0.25 * (1 - distance / 200)})`;
+              this.ctx.lineWidth = 1.2;
+              this.ctx.stroke();
+            }
+          }
+        }
+        
+        requestAnimationFrame(() => this.animate());
+      }
+    }
+
+    const canvas = document.getElementById('network-canvas');
+    new NetworkAnimation(canvas);
+
+    // Side Menu Toggle
+    function toggleMenu() {
+      const sideMenu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('menuOverlay');
+      const isOpen = sideMenu.classList.contains('open');
+      
+      if (isOpen) {
+        sideMenu.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      } else {
+        sideMenu.classList.add('open');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Navigation scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('main-nav');
+      if (window.scrollY > 100) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Meal Modal Functions
+    function openMealModal() {
+      const modal = document.getElementById('mealModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMealModal(event) {
+      if (!event || event.target.id === 'mealModal') {
+        const modal = document.getElementById('mealModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Accommodation Modal Functions
+    function openAccommodationModal() {
+      const modal = document.getElementById('accommodationModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAccommodationModal(event) {
+      if (!event || event.target.id === 'accommodationModal') {
+        const modal = document.getElementById('accommodationModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Shuttle Modal Functions
+    function openShuttleModal() {
+      const modal = document.getElementById('shuttleModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeShuttleModal(event) {
+      if (!event || event.target.id === 'shuttleModal') {
+        const modal = document.getElementById('shuttleModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // ESC 키로 모든 모달 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMealModal();
+        closeAccommodationModal();
+        closeShuttleModal();
+      }
+    });
+  </script>
+ </body>
+</html>
