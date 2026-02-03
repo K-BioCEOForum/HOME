@@ -11,6 +11,7 @@
             --brand-green: #5c9c38;
             --brand-blue: #1f609e;
             --brand-navy: #0f3a66;
+            --brand-gold: #85AC0D;
             --light-bg: #f7f8f9;
             --text-dark: #333333;
             --text-gray: #555555;
@@ -78,6 +79,66 @@
             line-height: 1.4;
         }
 
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            background: #f7f8f9;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 10px 20px 0;
+        }
+
+        .tab-button {
+            flex: 1;
+            max-width: 250px;
+            padding: 15px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            color: var(--brand-green);
+            background: rgba(92, 156, 56, 0.05);
+        }
+
+        .tab-button.active {
+            color: var(--brand-green);
+            border-bottom-color: var(--brand-green);
+            background: #fff;
+        }
+
+        .tab-button.day1.active {
+            color: var(--brand-gold);
+            border-bottom-color: var(--brand-gold);
+        }
+
+        .tab-button.day2.active {
+            color: var(--brand-green);
+            border-bottom-color: var(--brand-green);
+        }
+
+        .tab-button.day3.active {
+            color: var(--brand-blue);
+            border-bottom-color: var(--brand-blue);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         /* Program Table */
         .program-table {
             width: 100%;
@@ -88,7 +149,7 @@
 
         .time-col {
             width: 130px;
-            padding: 20px 20px 20px 40px;
+            padding: 15px 15px 15px 30px;
             text-align: left;
             vertical-align: top;
             font-family: 'Montserrat', sans-serif;
@@ -100,7 +161,7 @@
         }
 
         .content-col {
-            padding: 20px 40px;
+            padding: 15px 30px;
             vertical-align: top;
         }
 
@@ -120,6 +181,10 @@
         
         .featured-badge {
             background: var(--brand-green);
+        }
+
+        .gold-badge {
+            background: var(--brand-gold);
         }
 
         .session-title {
@@ -194,21 +259,20 @@
             margin-right: 4px;
         }
 
-        /* Panel Discussion Styles - Simplified Text Format */
+        /* Panel Discussion Styles */
         .panel-section {
             margin-top: 15px;
             background-color: var(--light-bg);
             padding: 12px 20px;
             border-radius: 8px;
-            border-left: 4px solid var(--brand-blue);
+            border-left: 3px solid var(--brand-blue);
         }
         
         .panel-section.featured {
             background-color: rgba(92, 156, 56, 0.08);
-            border-left: 4px solid var(--brand-green);
+            border-left: 3px solid var(--brand-green);
         }
         
-        /* Desktop: Horizontal panel member layout */
         @media screen and (min-width: 769px) {
             .panel-members-wrapper {
                 display: flex;
@@ -292,8 +356,8 @@
             background-color: #fcfcfc; 
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
         }
         
         .break-title {
@@ -345,6 +409,7 @@
             color: #888;
             background: #fafafa;
             border-top: 1px solid #eee;
+            word-break: keep-all;
         }
 
         /* Mobile Styles */
@@ -354,6 +419,17 @@
             header { padding: 30px 20px; }
             h1 { font-size: 26px; }
             .sub-theme { font-size: 16px; }
+
+            .tab-navigation {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .tab-button {
+                max-width: 100%;
+                border-bottom: 1px solid #e0e0e0;
+                border-radius: 0;
+            }
 
             .program-table, .program-table tbody, .program-table tr, .program-table td {
                 display: block;
@@ -368,7 +444,7 @@
 
             .time-col {
                 width: 100%;
-                padding: 20px 20px 5px 20px; 
+                padding: 12px 20px 3px 20px; 
                 border-right: none;
                 font-size: 14px;
                 color: #888; 
@@ -378,17 +454,46 @@
             .lunch-row .time-col { color: var(--brand-blue); }
 
             .content-col {
-                padding: 5px 20px 30px 20px; 
+                padding: 3px 20px 15px 20px; 
             }
 
-            .session-title { font-size: 20px; }
-            .session-subtitle { font-size: 15px; }
-            .session-quote { font-size: 15px; }
-            .list-box { padding: 15px; }
-            .bullet-list { padding-left: 15px; font-size: 14px; }
+            .session-badge {
+                margin-bottom: 8px;
+            }
+
+            .session-title { 
+                font-size: 18px;
+                margin: 0 0 6px 0;
+            }
+            .session-subtitle { 
+                font-size: 14px;
+                margin: 0 0 10px 0;
+            }
+            .session-quote { 
+                font-size: 14px;
+                margin: 0 0 10px 0;
+            }
+            .list-box { 
+                padding: 12px;
+                margin-top: 8px;
+            }
+            .bullet-list { 
+                padding-left: 15px; 
+                font-size: 13px; 
+            }
             
             .panel-section {
-                padding: 15px 20px;
+                padding: 10px 15px;
+                margin-top: 8px;
+            }
+            
+            .break-title {
+                font-size: 15px;
+            }
+            
+            .break-icon {
+                font-size: 16px;
+                margin-right: 8px;
             }
             
             .panel-member {
@@ -400,6 +505,12 @@
                 display: block;
                 margin-left: 0;
                 margin-top: 3px;
+            }
+            
+            .footer-note {
+                font-size: 12px;
+                padding: 20px 15px;
+                line-height: 1.6;
             }
         }
 
@@ -426,6 +537,19 @@
                 width: 100%;
             }
 
+            .tab-navigation {
+                display: none;
+            }
+
+            .tab-content {
+                display: block !important;
+                page-break-before: always;
+            }
+
+            .tab-content:first-child {
+                page-break-before: avoid;
+            }
+
             tr {
                 page-break-inside: avoid;
                 break-inside: avoid;
@@ -444,472 +568,676 @@
 
     <div class="container">
         <header>
-            <div class="brand-logo" contenteditable="true">Korea Biotech CEO Forum 2026</div>
-
-            <h1 contenteditable="true">Lonely Decisions by CEOs :<br>People, Capital and Managing Uncertainty</h1>
-            
-            <div class="sub-theme" contenteditable="true">
+            <div class="brand-logo">Korea Biotech CEO Forum 2026</div>
+            <h1>Lonely Decisions by CEOs :<br>People, Capital and Managing Uncertainty</h1>
+            <div class="sub-theme">
                 Designing the Next Corporate Reality in the Age of Uncertainty
             </div>
         </header>
 
-        <table class="program-table">
-            <tbody>
-            
-            <!-- Opening Remarks -->
-             <tr>
-                <td class="time-col" contenteditable="true">08:50 - 09:00</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Opening</span>
-                    <div class="session-title" contenteditable="true">Agenda & Flow 소개</div>
-                    
-                    <div class="panel-section">
-                        <div class="speaker-info">
-                            <span class="speaker-name" contenteditable="true" style="color: #0f3a66; font-weight: 700;">최윤정</span>
-<span class="speaker-title" contenteditable="true" style="color: #555555; font-weight: 400;">SK바이오팜 본부장</span>
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-button day1 active" onclick="showTab('day1')">
+                2월 27일 (금)<br><span style="font-size: 11px; font-weight: 400;">Day 1</span>
+            </button>
+            <button class="tab-button day2" onclick="showTab('day2')">
+                2월 28일 (토)<br><span style="font-size: 11px; font-weight: 400;">Day 2</span>
+            </button>
+            <button class="tab-button day3" onclick="showTab('day3')">
+                3월 1일 (일)<br><span style="font-size: 11px; font-weight: 400;">Day 3</span>
+            </button>
+        </div>
+
+        <!-- Day 1: 2월 27일 (금) -->
+        <div id="day1" class="tab-content active">
+            <table class="program-table">
+                <tbody>
+                
+                <!-- Registration -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-gold)">15:30 - 16:00</td>
+                    <td class="content-col">
+                        <div class="break-title" style="color:var(--brand-gold)">
+                            <span>Registration</span>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">비오토피아 입구</div>
+                    </td>
+                </tr>
 
-            <!-- Featured Talk -->
-            <tr>
-                <td class="time-col" contenteditable="true">09:00 - 09:30</td>
-                <td class="content-col">
-                    <span class="session-badge featured-badge" contenteditable="true">Featured Talk</span>
-                    <div class="session-title" contenteditable="true">License and Licensability</div>
-                    
-                    <div class="session-subtitle" contenteditable="true"></div>
-                    
-                    <div class="panel-section featured">
-                        <div class="speaker-info">
-                            <span class="speaker-name" contenteditable="true">윤태영</span>
-                            <span class="speaker-title" contenteditable="true">오스코텍 대표</span>
+                <!-- Welcome Reception -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-gold)">15:30 - 16:30</td>
+                    <td class="content-col">
+                        <div class="break-title" style="color:var(--brand-gold)">
+                            <span>Welcome Reception (Standing)</span>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">연회장 포이어</div>
+                    </td>
+                </tr>
 
-            <!-- Session 1: Panel Discussion -->
-            <tr>
-                <td class="time-col" contenteditable="true">09:30 - 10:10</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Panel Session 1</span>
-                    <div class="session-title" contenteditable="true">재무적 생존 전략</div>
-                    
-                    <div class="session-subtitle" contenteditable="true">바이오텍CEO가 고민하는 R&D및 펀딩의 딜레마에 대해서 점검합니다</div>
-                    
-                    <div class="list-box">
-                        <ul class="bullet-list" contenteditable="true">
-                            <li>프로젝트과 플랫폼 고도화 사이의 효과적인 자원배분</li>
-                            <li>리드 프로젝트의 적응증 선정시 고려사항</li>
-                            <li>시간으로 돈을 살때 vs 저비용으로 멀리 갈때</li>                            
-                            <li>피봇 vs 집중투자</li> 
-                            <li>코스닥 상장의 대안은</li>
-                        </ul>
-                    </div>
-
-                    <div class="panel-section">
-                        <div class="panel-label">[패널토론]</div>
-                        <div class="panel-members-wrapper">
-                            <div class="panel-member">
-                                <span class="member-name moderator" contenteditable="true">이승주</span>
-                                <span class="member-affiliation" contenteditable="true">오름테라퓨틱 대표</span>
-                                <span class="moderator-indicator"></span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">신동승</span>
-                                <span class="member-affiliation" contenteditable="true">지피씨알 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">인경수</span>
-                                <span class="member-affiliation" contenteditable="true">프레이져 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">정두영</span>
-                                <span class="member-affiliation" contenteditable="true">피노바이오 대표</span>
+                <!-- Opening Remarks -->
+                <tr>
+                    <td class="time-col">16:40 - 17:00</td>
+                    <td class="content-col">
+                        <span class="session-badge gold-badge">Opening</span>
+                        <div class="session-title">Opening Remarks</div>
+                        <div style="font-size: 14px; color: #666; margin-top: 10px; margin-bottom: 15px;">메인홀</div>
+                        
+                        <div class="panel-section" style="background-color: rgba(133, 172, 13, 0.08); border-left: 4px solid var(--brand-gold);">
+                            <div class="speaker-info" style="color: var(--brand-gold);">
+                                <span class="speaker-name" style="color: #0f3a66; font-weight: 700;">이근우</span>
+                                <span class="speaker-title" style="color: #555555; font-weight: 400;">진에딧 대표</span>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <!-- Break -->
-            <tr class="break-row">
-                <td class="time-col" contenteditable="true" style="color:var(--brand-green)">10:10 - 10:30</td>
-                <td class="content-col">
-                    <div class="break-title">
-                        <span class="break-icon">☕</span> <span contenteditable="true">Morning Coffee Break</span>
-                    </div>
-                </td>
-            </tr>
-
-            <!-- Session 2A: Panel Discussion -->
-            <tr>
-                <td class="time-col" contenteditable="true">10:30 - 11:10</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Panel Session 2A</span>
-                    <div class="session-title" contenteditable="true">전략적 딜-메이킹 I: Asset Deal</div>
-                    
-                    <div class="session-subtitle" contenteditable="true">파트너십 구조 설계 및 자산 가치 극대화</div>
-                    
-                    <div class="list-box">
-                        <ul class="bullet-list" contenteditable="true">
-                            <li>딜 하기 전에 알았으면 좋았을 정보</li>
-                            <li>다음 딜 할때는 하지 않을 후회 되는 일</li>
-                            <li>딜 관련 소통(이사회, 투자자) 전략</li>
-                        </ul>
-                    </div>
-
-                    <div class="panel-section">
-                        <div class="panel-label">[패널토론]</div>
-                        <div class="panel-members-wrapper">
-                            <div class="panel-member">
-                                <span class="member-name moderator" contenteditable="true">이승주</span>
-                                <span class="member-affiliation" contenteditable="true">오름테라퓨틱 대표</span>
-                                <span class="moderator-indicator"></span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">허남구</span>
-                                <span class="member-affiliation" contenteditable="true">에임드바이오 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">한상열</span>
-                                <span class="member-affiliation" contenteditable="true">인제니아 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true"></span>
-                                <span class="member-affiliation" contenteditable="true"></span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true"></span>
-                                <span class="member-affiliation" contenteditable="true"></span>
+                <!-- Keynote Address -->
+                <tr>
+                    <td class="time-col">16:50 - 17:15</td>
+                    <td class="content-col">
+                        <span class="session-badge featured-badge">Keynote</span>
+                        <div class="session-title">Keynote Address</div>
+                        
+                        <div class="panel-section featured">
+                            <div class="speaker-info">
+                                <span class="speaker-name">이동훈</span>
+                                <span class="speaker-title">SK 바이오팜 대표</span>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <!-- Session 2B: Panel Discussion -->
-            <tr>
-                <td class="time-col" contenteditable="true">11:10 - 11:40</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Panel Session 2B</span>
-                    <div class="session-title" contenteditable="true">전략적 딜-메이킹 II: Platform Deal</div>
-                    
-                    <div class="session-subtitle" contenteditable="true"></div>
-                    
-                    <div class="list-box">
-                        <ul class="bullet-list" contenteditable="true">
-                            <li>딜 경험 공유</li>
-                            <li>회사의 가치를 유지하면서 지속적인 플랫폼 딜을 하는 전략</li>
-                            <li>플랫폼과 에셋 딜 사이의 전략적 선택</li>
-                        </ul>
-                    </div>
-
-                    <div class="panel-section">
-                        <div class="panel-label">[패널토론]</div>
-                        <div class="panel-members-wrapper">
-                            <div class="panel-member">
-                                <span class="member-name moderator" contenteditable="true">이근우</span>
-                                <span class="member-affiliation" contenteditable="true">진에딧 대표</span>
-                                <span class="moderator-indicator"></span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">이승주</span>
-                                <span class="member-affiliation" contenteditable="true">오름테라퓨틱 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">이성욱</span>
-                                <span class="member-affiliation" contenteditable="true">알지노믹스 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">정두영</span>
-                                <span class="member-affiliation" contenteditable="true">피노바이오 대표</span>
+                <!-- Fireside Chat -->
+                <tr>
+                    <td class="time-col">17:15 - 17:40</td>
+                    <td class="content-col">
+                        <span class="session-badge featured-badge">Fireside Chat</span>
+                        <div class="session-title">Fireside Chat</div>
+                        
+                        <div class="panel-section featured">
+                            <div class="speaker-info">
+                                <span class="speaker-name">존림</span>
+                                <span class="speaker-title">삼성바이오로직스 대표</span>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <!-- Lunch -->
-            <tr class="lunch-row">
-                <td class="time-col" contenteditable="true">11:40 - 12:50</td>
-                <td class="content-col">
-                    <div class="break-title">
-                        <span class="break-icon">🍽️</span> <span contenteditable="true">Networking Luncheon</span>
-                    </div>
-                </td>
-            </tr>
+                <!-- Member Introduction -->
+                <tr>
+                    <td class="time-col">17:40 - 18:30</td>
+                    <td class="content-col">
+                        <span class="session-badge gold-badge">Networking</span>
+                        <div class="session-title">Member Introduction</div>
+                        <div class="session-subtitle">참석자 소개</div>
+                    </td>
+                </tr>
 
-            <!-- R&D Talk -->
-            <tr>
-                <td class="time-col" contenteditable="true">12:50 - 13:10</td>
-                <td class="content-col">
-                    <span class="session-badge featured-badge" contenteditable="true">R&D Talk</span>
-                    <div class="session-title" contenteditable="true">First-in-Class와 Best-in-Class 신약개발에 관한 소견</div>
-                                     
-                       <div class="panel-section featured">
-                        <div class="speaker-info">
-                            <span class="speaker-name" contenteditable="true">최영기</span>
-                            <span class="speaker-title" contenteditable="true">유한양행 연구소장</span>
+                <!-- Gala Dinner -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-gold)">18:30 - 20:00</td>
+                    <td class="content-col">
+                        <div class="break-title" style="color:var(--brand-gold)">
+                            <span>Gala Dinner</span>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">코스 디너</div>
+                    </td>
+                </tr>
 
-            <!-- Session 3: Panel Discussion -->
-            <tr>
-                <td class="time-col" contenteditable="true">13:10 - 13:40</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Panel Session 3</span>
-                    <div class="session-title" contenteditable="true">What to keep within company and what to outsource?</div>
-                    
-                    <div class="session-subtitle" contenteditable="true">더 효율적인 회사 운영을 가능하게 하는 방법</div>
-                    
-                    <div class="list-box">
-                        <ul class="bullet-list" contenteditable="true">
-                            <li><strong>Cross-border Operation:</strong> 다국가 오퍼레이션의 장점과 단점</li>
-                            <li><strong>Lean Operation:</strong> 더 효율적인 비즈니스를 위한 전략</li>
-                            <li><strong>Operational Efficiency by outsourcing and AI:</strong> 다양한 아웃소싱 모델과 AI 활용을 통한 오퍼레이션 효율성</li>
-                        </ul>
-                    </div>
+                <!-- Networking Night -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-gold)">20:00 - 22:00</td>
+                    <td class="content-col">
+                        <div class="break-title" style="color:var(--brand-gold)">
+                            <span>Networking Night</span>
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">W22 (타운하우스) · Casual Networking & Drinks</div>
+                    </td>
+                </tr>
 
-                    <div class="panel-section">
-                        <div class="panel-label">[패널토론]</div>
-                        <div class="panel-members-wrapper">
-                            <div class="panel-member">
-                                <span class="member-name moderator" contenteditable="true">이근우</span>
-                                <span class="member-affiliation" contenteditable="true">진에딧 대표</span>
-                                <span class="moderator-indicator"></span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">송호준</span>
-                                <span class="member-affiliation" contenteditable="true">파인트리테라퓨틱스 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">이동기</span>
-                                <span class="member-affiliation" contenteditable="true">올릭스파마 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">임성원</span>
-                                <span class="member-affiliation" contenteditable="true">임프리메드 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">이승주</span>
-                                <span class="member-affiliation" contenteditable="true">오름테라퓨틱 대표</span>
+            </tbody></table>
+        </div>
+
+        <!-- Day 2: 2월 28일 (토) -->
+        <div id="day2" class="tab-content">
+            <table class="program-table">
+                <tbody>
+                
+                <!-- Breakfast -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-green)">07:30 - 08:50</td>
+                    <td class="content-col">
+                        <div class="break-title">
+                            <span>Breakfast 조식</span>
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">디아넥스호텔 레스토랑 · Buffet</div>
+                    </td>
+                </tr>
+
+                <!-- Opening Remarks -->
+                <tr>
+                    <td class="time-col">08:50 - 09:00</td>
+                    <td class="content-col">
+                        <span class="session-badge">Opening</span>
+                        <div class="session-title">Agenda & Flow 소개</div>
+                        
+                        <div class="panel-section">
+                            <div class="speaker-info">
+                                <span class="speaker-name" style="color: #0f3a66; font-weight: 700;">최윤정</span>
+                                <span class="speaker-title" style="color: #555555; font-weight: 400;">SK바이오팜 본부장</span>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <!-- Session 4: Panel Discussion -->
-            <tr>
-                <td class="time-col" contenteditable="true">13:40 - 14:30</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Panel Session 4</span>
-                    <div class="session-title" contenteditable="true">Macro View on AI</div>
-                    
-                    <div class="session-subtitle" contenteditable="true">AI를 바라보는 CEO의 관점은 어떻게 달라야 하는가?</div>
-                    
-                    <div class="list-box">
-                        <ul class="bullet-list" contenteditable="true">
-                            <li><strong>Perspectives on AI:</strong> AI 낙관론 vs. 거품론 - 우리의 관점은?</li>
-                            <li><strong>AI Impact on Biotech/Pharma:</strong> AI가 Discovery에서는 가시적 성과를 내기 시작했지만 임상을 대체하지는 못하고 있는데... Pharma 업의 본질적 혁신이 가능할 것인가?</li>
-                            <li><strong>AI Adoption Implications on HR:</strong> AI가 직원을 대체 가능한 시점에서, CEO 관점의 고민은?</li>
-                            <li><strong>CEO's AI Literacy:</strong> 불편한 주제: CEO가 AI Literacy가 낮아, 타인(CTO 등)의 말에 의존하거나, AI를 과대 혹은 과소평가하고 있지는 않는가?</li>
-                        </ul>
-                    </div>
-
-                    <div class="panel-section">
-                        <div class="panel-label">[패널토론]</div>
-                        <div class="panel-members-wrapper">
-                            <div class="panel-member">
-                                <span class="member-name moderator" contenteditable="true">최윤정</span>
-                                <span class="member-affiliation" contenteditable="true">SK바이오팜 본부장</span>
-                                <span class="moderator-indicator"></span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">이경호</span>
-                                <span class="member-affiliation" contenteditable="true">미라보바이오 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">석차옥</span>
-                                <span class="member-affiliation" contenteditable="true">갤럭스 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">금창원</span>
-                                <span class="member-affiliation" contenteditable="true">쓰리빌리언 대표</span>
+                <!-- Featured Talk -->
+                <tr>
+                    <td class="time-col">09:00 - 09:30</td>
+                    <td class="content-col">
+                        <span class="session-badge featured-badge">Featured Talk</span>
+                        <div class="session-title">License and Licensability</div>
+                        
+                        <div class="panel-section featured">
+                            <div class="speaker-info">
+                                <span class="speaker-name">윤태영</span>
+                                <span class="speaker-title">오스코텍 대표</span>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <!-- Break -->
-            <tr class="break-row">
-                <td class="time-col" contenteditable="true" style="color:var(--brand-green)">14:30 - 15:00</td>
-                <td class="content-col">
-                    <div class="break-title">
-                        <span class="break-icon">🍵</span> <span contenteditable="true">Afternoon Refresh</span>
-                    </div>
-                </td>
-            </tr>
+                <!-- Session 1: Panel Discussion -->
+                <tr>
+                    <td class="time-col">09:30 - 10:10</td>
+                    <td class="content-col">
+                        <span class="session-badge">Panel Session 1</span>
+                        <div class="session-title">재무적 생존 전략</div>
+                        
+                        <div class="session-subtitle">바이오텍CEO가 고민하는 R&D및 펀딩의 딜레마에 대해서 점검합니다</div>
+                        
+                        <div class="list-box">
+                            <ul class="bullet-list">
+                                <li>프로젝트과 플랫폼 고도화 사이의 효과적인 자원배분</li>
+                                <li>리드 프로젝트의 적응증 선정시 고려사항</li>
+                                <li>시간으로 돈을 살때 vs 저비용으로 멀리 갈때</li>
+                                <li>피봇 vs 집중투자</li>
+                                <li>코스닥 상장의 대안은</li>
+                            </ul>
+                        </div>
 
-            <!-- Session 5: Panel Discussion -->
-            <tr>
-                <td class="time-col" contenteditable="true">15:00 - 15:40</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Panel Session 5</span>
-                    <div class="session-title" contenteditable="true">Resilient Leadership</div>
-                    
-                    <div class="session-subtitle" contenteditable="true">답이 없는 상황에서, 리더는 무엇으로 조직을 이끄는가?</div>
-                    
-                    <div class="list-box">
-                        <ul class="bullet-list" contenteditable="true">
-                            <li><strong>The Weight of Decision:</strong> 불확실성 속에서 내려야 하는 CEO의 고독한 결단과 멘탈 관리</li>
-                            <li><strong>Trust Building:</strong> 구성원의 기대와 회사의 냉혹한 현실 사이의 간극을 좁히는 투명한 소통</li>
-                            <li><strong>Crisis Communication:</strong> 위기를 기회로, 불신을 신뢰 자산으로 바꾸는 리더의 메시지 전략</li>
-                        </ul>
-                    </div>
-
-                    <div class="panel-section">
-                        <div class="panel-label">[패널토론]</div>
-                        <div class="panel-members-wrapper">
-                            <div class="panel-member">
-                                <span class="member-name moderator" contenteditable="true">이병건</span>
-                                <span class="member-affiliation" contenteditable="true">플래그십파이어니어링 특별고문</span>
-                                <span class="moderator-indicator"></span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">이동기</span>
-                                <span class="member-affiliation" contenteditable="true">올릭스파마 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">김주희</span>
-                                <span class="member-affiliation" contenteditable="true">인베티지랩 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">강경화</span>
-                                <span class="member-affiliation" contenteditable="true">셀리아즈 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">홍유석</span>
-                                <span class="member-affiliation" contenteditable="true">지놈앤컴퍼니 대표</span>
+                        <div class="panel-section">
+                            <div class="panel-label">[패널토론]</div>
+                            <div class="panel-members-wrapper">
+                                <div class="panel-member">
+                                    <span class="member-name moderator">이승주</span>
+                                    <span class="member-affiliation">오름테라퓨틱스 대표</span>
+                                    <span class="moderator-indicator"></span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">신동승</span>
+                                    <span class="member-affiliation">지피씨알 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">인경수</span>
+                                    <span class="member-affiliation">프레이져 대표</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <!-- Session 6: Panel Discussion -->
-            <tr>
-                <td class="time-col" contenteditable="true">15:40 - 16:30</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Panel Session 6</span>
-                    <div class="session-title" contenteditable="true">Human Capital & Org Redesign</div>
-                    
-                    <div class="session-subtitle" contenteditable="true">"사람을 지키는 결정과 회사를 살리는 결정은 언제 충돌하는가?" (CEO-focused)</div>
-                    
-                    <div class="list-box">
-                        <ul class="bullet-list" contenteditable="true">
-                            <li><strong>Survival vs. Loyalty:</strong> 조직을 지키는 결정과 생존을 택하는 결정이 충돌하는 순간</li>
-                            <li><strong>Key Talent Dilemma:</strong> 핵심 인재를 지키는 선택이 조직 전체를 흔들 때</li>
-                            <li><strong>Culture Breakdown:</strong> 성과보다 문화가 먼저 무너지는 시점은 언제 오는가?</li>
-                            <li><strong>Post-Restructuring Risk:</strong> 구조조정 이후 CEO가 가장 먼저 마주하는 리스크</li>
-                            <li><strong>Irreversible Decisions:</strong> 사람에 대한 결정이 전략이 되는 순간과, 후회로 남는 순간</li>
-                        </ul>
-                    </div>
+                <!-- Break -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-green)">10:10 - 10:30</td>
+                    <td class="content-col">
+                        <div class="break-title">
+                            <span>Morning Coffee Break</span>
+                        </div>
+                    </td>
+                </tr>
 
-                    <div class="panel-section">
-                        <div class="panel-label">[패널토론]</div>
-                        <div class="panel-members-wrapper">
-                            <div class="panel-member">
-                                <span class="member-name moderator" contenteditable="true">김문정</span>
-                                <span class="member-affiliation" contenteditable="true">전 마티카바이오 VP</span>
-                                <span class="moderator-indicator"></span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">신동승</span>
-                                <span class="member-affiliation" contenteditable="true">지피씨알 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">김건수</span>
-                                <span class="member-affiliation" contenteditable="true">큐로셀 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">이성욱</span>
-                                <span class="member-affiliation" contenteditable="true">알지노믹스 대표</span>
-                            </div>
-                            <div class="panel-member">
-                                <span class="member-name" contenteditable="true">박상훈</span>
-                                <span class="member-affiliation" contenteditable="true">일리미스테라퓨틱스 대표</span>
+                <!-- Session 2A: Panel Discussion -->
+                <tr>
+                    <td class="time-col">10:30 - 11:10</td>
+                    <td class="content-col">
+                        <span class="session-badge">Panel Session 2A</span>
+                        <div class="session-title">전략적 딜-메이킹 I: Asset Deal</div>
+                        
+                        <div class="session-subtitle">파트너십 구조 설계 및 자산 가치 극대화</div>
+                        
+                        <div class="list-box">
+                            <ul class="bullet-list">
+                                <li>딜 하기 전에 알았으면 좋았을 정보</li>
+                                <li>다음 딜 할때는 하지 않을 후회 되는 일</li>
+                                <li>딜 관련 소통(이사회, 투자자) 전략</li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-section">
+                            <div class="panel-label">[패널토론]</div>
+                            <div class="panel-members-wrapper">
+                                <div class="panel-member">
+                                    <span class="member-name moderator">이승주</span>
+                                    <span class="member-affiliation">오름테라퓨틱스 대표</span>
+                                    <span class="moderator-indicator"></span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">허남구</span>
+                                    <span class="member-affiliation">에임드바이오 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">한상열</span>
+                                    <span class="member-affiliation">인제니아 대표</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            <!-- Special Talk -->
-            <tr>
-                <td class="time-col" contenteditable="true">16:30 - 16:50</td>
-                <td class="content-col">
-                    <span class="session-badge featured-badge" contenteditable="true">Special Talk</span>
-                    <div class="session-title" contenteditable="true">한국 바이오의 미래 로드맵</div>
-                    <div class="session-subtitle" contenteditable="true">국가위원회 정책 방향과 Flagship Pioneering 인사이트</div>
-                    
-                    <div class="panel-section featured">
-                        <div class="speaker-info">
-                            <span class="speaker-name" contenteditable="true">이병건</span>
-                            <span class="speaker-title" contenteditable="true">플래그십파이어니어링 특별고문</span>
+                <!-- Session 2B: Panel Discussion -->
+                <tr>
+                    <td class="time-col">11:10 - 11:40</td>
+                    <td class="content-col">
+                        <span class="session-badge">Panel Session 2B</span>
+                        <div class="session-title">전략적 딜-메이킹 II: Platform Deal</div>
+                        
+                        <div class="list-box">
+                            <ul class="bullet-list">
+                                <li>딜 경험 공유</li>
+                                <li>회사의 가치를 유지하면서 지속적인 플랫폼 딜을 하는 전략</li>
+                                <li>플랫폼과 에셋 딜 사이의 전략적 선택</li>
+                            </ul>
                         </div>
-                    </div>
-                </td>
-            </tr>
 
-            <!-- Discussion -->
-            <tr>
-                <td class="time-col" contenteditable="true">16:50 - 17:20</td>
-                <td class="content-col">
-                    <span class="session-badge" contenteditable="true">Discussion</span>
-                    <div class="session-title" contenteditable="true">자유 토론</div>
-                    
-                    <div class="panel-section">
-                        <div class="panel-members-wrapper">
-                            <div class="panel-member">
-                                <span class="member-name moderator" contenteditable="true">이승주</span>
-                                <span class="member-affiliation" contenteditable="true">오름테라퓨틱 대표</span>
-                                <span class="moderator-indicator"></span>
+                        <div class="panel-section">
+                            <div class="panel-label">[패널토론]</div>
+                            <div class="panel-members-wrapper">
+                                <div class="panel-member">
+                                    <span class="member-name moderator">이근우</span>
+                                    <span class="member-affiliation">진에딧 대표</span>
+                                    <span class="moderator-indicator"></span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">이승주</span>
+                                    <span class="member-affiliation">오름테라퓨틱스 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">이성욱</span>
+                                    <span class="member-affiliation">알지노믹스 대표</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-            
-            <!-- Closing Remarks -->
-            <tr style="border-top: 4px solid var(--brand-green);">
-                <td class="time-col" contenteditable="true" style="border:none;">17:20 - 17:30</td>
-                <td class="content-col" style="border:none;">
-                    <span class="session-badge featured-badge" contenteditable="true">Closing</span>
-                    <div class="session-title" contenteditable="true">The Next Chapter</div>
-                    
-                    <div class="panel-section featured">
-                        <div class="speaker-info">
-                            <span class="speaker-name" contenteditable="true">최윤정</span>
-                            <span class="speaker-title" contenteditable="true">SK바이오팜 본부장</span>
+                    </td>
+                </tr>
+
+                <!-- Lunch -->
+                <tr class="lunch-row">
+                    <td class="time-col">11:40 - 12:50</td>
+                    <td class="content-col">
+                        <div class="break-title">
+                            <span>Networking Luncheon</span>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">at The Annex Restaurant · 중식</div>
+                    </td>
+                </tr>
 
-        </tbody></table>
+                <!-- R&D Talk -->
+                <tr>
+                    <td class="time-col">12:50 - 13:10</td>
+                    <td class="content-col">
+                        <span class="session-badge featured-badge">R&D Talk</span>
+                        <div class="session-title">First-in-Class와 Best-in-Class 신약개발에 관한 소견</div>
+                        
+                        <div class="panel-section featured">
+                            <div class="speaker-info">
+                                <span class="speaker-name">최영기</span>
+                                <span class="speaker-title">유한양행 연구소장</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-        <div class="footer-note" contenteditable="true">
+                <!-- Session 3: Panel Discussion -->
+                <tr>
+                    <td class="time-col">13:10 - 13:40</td>
+                    <td class="content-col">
+                        <span class="session-badge">Panel Session 3</span>
+                        <div class="session-title">What to keep within company and what to outsource?</div>
+                        
+                        <div class="session-subtitle">더 효율적인 회사 운영을 가능하게 하는 방법</div>
+                        
+                        <div class="list-box">
+                            <ul class="bullet-list">
+                                <li><strong>Cross-border Operation:</strong> 다국가 오퍼레이션의 장점과 단점</li>
+                                <li><strong>Lean Operation:</strong> 더 효율적인 비즈니스를 위한 전략</li>
+                                <li><strong>Operational Efficiency by outsourcing and AI:</strong> 다양한 아웃소싱 모델과 AI 활용을 통한 오퍼레이션 효율성</li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-section">
+                            <div class="panel-label">[패널토론]</div>
+                            <div class="panel-members-wrapper">
+                                <div class="panel-member">
+                                    <span class="member-name moderator">이근우</span>
+                                    <span class="member-affiliation">진에딧 대표</span>
+                                    <span class="moderator-indicator"></span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">송호준</span>
+                                    <span class="member-affiliation">파인트리테라퓨틱스 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">이동기</span>
+                                    <span class="member-affiliation">올릭스파마 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">임성원</span>
+                                    <span class="member-affiliation">임프리메드 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">이승주</span>
+                                    <span class="member-affiliation">오름테라퓨틱스 대표</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Session 4: Panel Discussion -->
+                <tr>
+                    <td class="time-col">13:40 - 14:30</td>
+                    <td class="content-col">
+                        <span class="session-badge">Panel Session 4</span>
+                        <div class="session-title">Macro View on AI</div>
+                        
+                        <div class="session-subtitle">AI를 바라보는 CEO의 관점은 어떻게 달라야 하는가?</div>
+                        
+                        <div class="list-box">
+                            <ul class="bullet-list">
+                                <li><strong>Perspectives on AI:</strong> AI 낙관론 vs. 거품론 - 우리의 관점은?</li>
+                                <li><strong>AI Impact on Biotech/Pharma:</strong> AI가 Discovery에서는 가시적 성과를 내기 시작했지만 임상을 대체하지는 못하고 있는데... Pharma 업의 본질적 혁신이 가능할 것인가?</li>
+                                <li><strong>AI Adoption Implications on HR:</strong> AI가 직원을 대체 가능한 시점에서, CEO 관점의 고민은?</li>
+                                <li><strong>CEO's AI Literacy:</strong> 불편한 주제: CEO가 AI Literacy가 낮아, 타인(CTO 등)의 말에 의존하거나, AI를 과대 혹은 과소평가하고 있지는 않는가?</li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-section">
+                            <div class="panel-label">[패널토론]</div>
+                            <div class="panel-members-wrapper">
+                                <div class="panel-member">
+                                    <span class="member-name moderator">최용정</span>
+                                    <span class="member-affiliation">SK바이오팜 본부장</span>
+                                    <span class="moderator-indicator"></span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">이경호</span>
+                                    <span class="member-affiliation">미라보바이오 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">석차옥</span>
+                                    <span class="member-affiliation">갤럭스 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">금창원</span>
+                                    <span class="member-affiliation">쓰리빌리언 대표</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Break -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-green)">14:30 - 15:00</td>
+                    <td class="content-col">
+                        <div class="break-title">
+                            <span>Afternoon Refresh</span>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Session 5: Panel Discussion -->
+                <tr>
+                    <td class="time-col">15:00 - 15:40</td>
+                    <td class="content-col">
+                        <span class="session-badge">Panel Session 5</span>
+                        <div class="session-title">Resilient Leadership</div>
+                        
+                        <div class="session-subtitle">답이 없는 상황에서, 리더는 무엇으로 조직을 이끄는가?</div>
+                        
+                        <div class="list-box">
+                            <ul class="bullet-list">
+                                <li><strong>The Weight of Decision:</strong> 불확실성 속에서 내려야 하는 CEO의 고독한 결단과 멘탈 관리</li>
+                                <li><strong>Trust Building:</strong> 구성원의 기대와 회사의 냉혹한 현실 사이의 간극을 좁히는 투명한 소통</li>
+                                <li><strong>Crisis Communication:</strong> 위기를 기회로, 불신을 신뢰 자산으로 바꾸는 리더의 메시지 전략</li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-section">
+                            <div class="panel-label">[패널토론]</div>
+                            <div class="panel-members-wrapper">
+                                <div class="panel-member">
+                                    <span class="member-name moderator">이병건</span>
+                                    <span class="member-affiliation">플래그십파이어니어링 특별고문</span>
+                                    <span class="moderator-indicator"></span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">이동기</span>
+                                    <span class="member-affiliation">올릭스파마 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">김주희</span>
+                                    <span class="member-affiliation">인베티지랩 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">강경화</span>
+                                    <span class="member-affiliation">셀리아즈 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">홍유석</span>
+                                    <span class="member-affiliation">지놈앤컴퍼니 대표</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Session 6: Panel Discussion -->
+                <tr>
+                    <td class="time-col">15:40 - 16:30</td>
+                    <td class="content-col">
+                        <span class="session-badge">Panel Session 6</span>
+                        <div class="session-title">Human Capital & Org Redesign</div>
+                        
+                        <div class="session-subtitle">"사람을 지키는 결정과 회사를 살리는 결정은 언제 충돌하는가?" (CEO-focused)</div>
+                        
+                        <div class="list-box">
+                            <ul class="bullet-list">
+                                <li><strong>Survival vs. Loyalty:</strong> 조직을 지키는 결정과 생존을 택하는 결정이 충돌하는 순간</li>
+                                <li><strong>Key Talent Dilemma:</strong> 핵심 인재를 지키는 선택이 조직 전체를 흔들 때</li>
+                                <li><strong>Culture Breakdown:</strong> 성과보다 문화가 먼저 무너지는 시점은 언제 오는가?</li>
+                                <li><strong>Post-Restructuring Risk:</strong> 구조조정 이후 CEO가 가장 먼저 마주하는 리스크</li>
+                                <li><strong>Irreversible Decisions:</strong> 사람에 대한 결정이 전략이 되는 순간과, 후회로 남는 순간</li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-section">
+                            <div class="panel-label">[패널토론]</div>
+                            <div class="panel-members-wrapper">
+                                <div class="panel-member">
+                                    <span class="member-name moderator">김문정</span>
+                                    <span class="member-affiliation">전 마티카바이오 VP</span>
+                                    <span class="moderator-indicator"></span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">신동승</span>
+                                    <span class="member-affiliation">지피씨알 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">김건수</span>
+                                    <span class="member-affiliation">큐로셀 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">이성욱</span>
+                                    <span class="member-affiliation">알지노믹스 대표</span>
+                                </div>
+                                <div class="panel-member">
+                                    <span class="member-name">박상훈</span>
+                                    <span class="member-affiliation">일리미스테라퓨틱스 대표</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Special Talk -->
+                <tr>
+                    <td class="time-col">16:30 - 16:50</td>
+                    <td class="content-col">
+                        <span class="session-badge featured-badge">Special Talk</span>
+                        <div class="session-title">한국 바이오의 미래 로드맵</div>
+                        <div class="session-subtitle">국가위원회 정책 방향과 Flagship Pioneering 인사이트</div>
+                        
+                        <div class="panel-section featured">
+                            <div class="speaker-info">
+                                <span class="speaker-name">이병건</span>
+                                <span class="speaker-title">플래그십파이어니어링 특별고문</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Discussion -->
+                <tr>
+                    <td class="time-col">16:50 - 17:20</td>
+                    <td class="content-col">
+                        <span class="session-badge">Discussion</span>
+                        <div class="session-title">자유 토론</div>
+                        
+                        <div class="panel-section">
+                            <div class="panel-members-wrapper">
+                                <div class="panel-member">
+                                    <span class="member-name moderator">이승주</span>
+                                    <span class="member-affiliation">오름테라퓨틱스 대표</span>
+                                    <span class="moderator-indicator"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Closing Remarks -->
+                <tr style="border-top: 4px solid var(--brand-green);">
+                    <td class="time-col" style="border:none;">17:20 - 17:30</td>
+                    <td class="content-col" style="border:none;">
+                        <span class="session-badge featured-badge">Closing</span>
+                        <div class="session-title">The Next Chapter</div>
+                        
+                        <div class="panel-section featured">
+                            <div class="speaker-info">
+                                <span class="speaker-name">최윤정</span>
+                                <span class="speaker-title">SK바이오팜 본부장</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Dinner -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-green)">18:00 - 20:00</td>
+                    <td class="content-col">
+                        <div class="break-title">
+                            <span>Dinner at Podo Hotel</span>
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">포도호텔 레스토랑</div>
+                    </td>
+                </tr>
+
+                <!-- Post-Event Gathering -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-green)">20:00 - 22:00</td>
+                    <td class="content-col">
+                        <div class="break-title">
+                            <span>Post-Event Gathering</span>
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">W22 (타운하우스) · Casual Gathering</div>
+                    </td>
+                </tr>
+
+            </tbody></table>
+        </div>
+
+        <!-- Day 3: 3월 1일 (일) -->
+        <div id="day3" class="tab-content">
+            <table class="program-table">
+                <tbody>
+                
+                <!-- Breakfast -->
+                <tr class="break-row">
+                    <td class="time-col" style="color:var(--brand-blue)">07:30 - 10:30</td>
+                    <td class="content-col">
+                        <div class="break-title" style="color:var(--brand-blue)">
+                            <span>Breakfast 조식</span>
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-top: 5px;">디아넥스호텔 레스토랑 · Buffet</div>
+                                        </td>
+                </tr>
+
+                <!-- Departure Info -->
+                <tr>
+                    <td class="time-col" style="color:var(--brand-blue)">자유 시간</td>
+                    <td class="content-col">
+                        <span class="session-badge" style="background: var(--brand-blue);">Information</span>
+                        <div class="session-title" style="font-size: 20px;">체크아웃 및 공항 이동</div>
+                        
+                        <div class="list-box">
+                            <ul class="bullet-list">
+                                <li><strong>디아넥스호텔 → 제주공항</strong> (약 50분 소요)</li>
+                                <li><strong>체크아웃:</strong> 각 숙소 프론트 데스크에서 진행</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #f0f9ff; border-left: 4px solid var(--brand-blue); border-radius: 4px;">
+                            <div style="font-size: 14px; color: #0369a1; font-weight: 600; margin-bottom: 8px;">✈️ 안전한 귀가 되세요</div>
+                            <div style="font-size: 13px; color: #555; line-height: 1.6;">
+                                Korea Biotech CEO Forum 2026에 참석해 주셔서 감사합니다.<br>
+                                귀가길에도 안전하시기를 바라며, 다음 포럼에서 다시 뵙겠습니다.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody></table>
+        </div>
+
+        <div class="footer-note">
             * 상기 일정 및 연사는 주최 측 사정에 따라 변경될 수 있습니다.<br>
             Korea Biotech CEO Forum 2026
         </div>
     </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.closest('.tab-button').classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
