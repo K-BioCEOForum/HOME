@@ -382,7 +382,6 @@ Korea Biotech CEO Forum 2026은 대한민국 바이오테크 산업의 리더들
 ## 문의
 
 - **Email**: koreabiotechceoforum@gmail.com
-- **Tel**: +82 10 2079 8754
 
 ---
 
